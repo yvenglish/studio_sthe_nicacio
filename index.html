@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sthe Nicácio Beauty Studio</title>
+  <meta name="description" content="Sthe Nicácio Beauty Studio | Cabelos alinhados, brilho intenso e cuidado em cada detalhe." />
+  <style>
+    :root{
+      --off:#f8f3ef;
+      --paper:#fffaf7;
+      --blush:#ddb7b7;
+      --blush-2:#ead5d0;
+      --coffee:#7a655d;
+      --coffee-dark:#4f3f39;
+      --soft:#b99287;
+      --shadow:0 20px 60px rgba(79,63,57,.13);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height:100vh;
+      color:var(--coffee-dark);
+      background:
+        radial-gradient(circle at 10% 5%, rgba(221,183,183,.36), transparent 32%),
+        radial-gradient(circle at 90% 0%, rgba(185,146,135,.20), transparent 30%),
+        linear-gradient(180deg, var(--off), #fffaf7 48%, var(--off));
+      overflow-x:hidden;
+    }
+
+    body::before, body::after{
+      content:"";
+      position:fixed;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      filter:blur(20px);
+      opacity:.25;
+      pointer-events:none;
+      z-index:-1;
+    }
+    body::before{background:var(--blush);left:-170px;top:120px}
+    body::after{background:var(--soft);right:-180px;bottom:80px}
+
+    .page{
+      width:min(100%, 520px);
+      margin:0 auto;
+      padding:28px 18px 44px;
+    }
+
+    .hero{
+      position:relative;
+      text-align:center;
+      padding:24px 16px 18px;
+      animation:fadeUp .8s ease both;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      top:42px;
+      background:
+        url('assets/logo-ondas.jpeg') center top/260px no-repeat;
+      opacity:.055;
+      pointer-events:none;
+      filter:saturate(.8);
+    }
+
+    .main-logo{
+      width:min(90%, 390px);
+      display:block;
+      margin:0 auto 10px;
+      mix-blend-mode:multiply;
+      filter:drop-shadow(0 18px 30px rgba(79,63,57,.10));
+    }
+
+    .tagline{
+      max-width:390px;
+      margin:0 auto;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size:1.05rem;
+      line-height:1.55;
+      color:var(--coffee);
+    }
+
+    .soft-label{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      margin:18px auto 0;
+      padding:8px 14px;
+      border:1px solid rgba(122,101,93,.14);
+      border-radius:999px;
+      color:var(--coffee);
+      background:rgba(255,250,247,.72);
+      backdrop-filter:blur(8px);
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+    }
+
+    .links{
+      display:grid;
+      gap:12px;
+      margin:22px 0 28px;
+      animation:fadeUp .8s ease .08s both;
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      min-height:58px;
+      padding:14px 18px;
+      border:1px solid rgba(122,101,93,.16);
+      border-radius:20px;
+      background:rgba(255,250,247,.86);
+      color:var(--coffee-dark);
+      text-decoration:none;
+      box-shadow:0 14px 35px rgba(79,63,57,.08);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      backdrop-filter:blur(10px);
+    }
+
+    .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:rgba(122,101,93,.28)}
+    .btn strong{font-size:.98rem;font-weight:650}
+    .btn span:first-child{display:flex;align-items:center;gap:12px}
+    .btn .arrow{opacity:.55;font-size:1.1rem}
+    .primary{
+      background:linear-gradient(135deg, var(--coffee), #9a7a70);
+      color:#fffaf7;
+      border-color:transparent;
+    }
+
+    section{
+      margin:20px 0;
+      padding:24px 20px;
+      border:1px solid rgba(122,101,93,.12);
+      border-radius:var(--radius);
+      background:rgba(255,250,247,.76);
+      box-shadow:0 18px 50px rgba(79,63,57,.08);
+      backdrop-filter:blur(10px);
+      animation:fadeUp .8s ease both;
+    }
+
+    .section-title{
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight:400;
+      font-size:1.55rem;
+      letter-spacing:.02em;
+      margin-bottom:8px;
+      color:var(--coffee-dark);
+    }
+
+    .section-sub{
+      color:var(--coffee);
+      line-height:1.6;
+      font-size:.95rem;
+      margin-bottom:18px;
+    }
+
+    .about-card{
+      display:grid;
+      grid-template-columns:96px 1fr;
+      gap:16px;
+      align-items:center;
+    }
+
+    .sthe-photo{
+      width:96px;
+      height:96px;
+      border-radius:50%;
+      object-fit:cover;
+      border:5px solid rgba(221,183,183,.35);
+      box-shadow:0 18px 34px rgba(79,63,57,.14);
+    }
+
+    .about-text h3{
+      font-family:Georgia, 'Times New Roman', serif;
+      font-weight:400;
+      font-size:1.22rem;
+      margin-bottom:6px;
+    }
+    .about-text p{font-size:.92rem;line-height:1.6;color:var(--coffee)}
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .chip{font-size:.78rem;padding:8px 10px;border-radius:999px;background:rgba(221,183,183,.20);color:var(--coffee)}
+
+    .story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+    .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+    figure{position:relative;overflow:hidden;border-radius:18px;background:var(--blush-2);aspect-ratio:3/4;cursor:pointer}
+    figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+    figure:hover img{transform:scale(1.04)}
+    figcaption{
+      position:absolute;left:8px;right:8px;bottom:8px;
+      padding:6px 8px;
+      border-radius:999px;
+      background:rgba(255,250,247,.78);
+      backdrop-filter:blur(8px);
+      color:var(--coffee-dark);
+      font-size:.68rem;
+      text-align:center;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .reviews{display:grid;gap:12px}
+    .review{
+      padding:16px;
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.54), rgba(234,213,208,.24));
+      border:1px solid rgba(122,101,93,.11);
+    }
+    .stars{color:#a78378;letter-spacing:.08em;font-size:.86rem;margin-bottom:8px}
+    .review p{line-height:1.55;color:var(--coffee);font-size:.9rem;margin-bottom:10px}
+    .review strong{font-size:.88rem;color:var(--coffee-dark)}
+
+    .mini-logo{
+      width:122px;
+      height:122px;
+      object-fit:cover;
+      border-radius:50%;
+      display:block;
+      margin:0 auto 14px;
+      box-shadow:0 20px 45px rgba(79,63,57,.11);
+    }
+
+    footer{text-align:center;padding:22px 0 12px;color:var(--coffee);font-size:.82rem;line-height:1.7}
+
+    .float-whats{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      text-decoration:none;
+      background:linear-gradient(135deg, var(--coffee), #9a7a70);
+      color:white;
+      box-shadow:0 20px 45px rgba(79,63,57,.26);
+      z-index:20;
+      font-size:1.35rem;
+    }
+
+    dialog{
+      width:min(92vw, 760px);
+      border:0;
+      padding:0;
+      border-radius:26px;
+      background:#fffaf7;
+      box-shadow:0 30px 90px rgba(0,0,0,.28);
+      overflow:hidden;
+      margin:auto;
+    }
+    dialog::backdrop{background:rgba(48,37,34,.58);backdrop-filter:blur(6px)}
+    .modal-img{width:100%;max-height:82vh;object-fit:contain;background:#211b19;display:block}
+    .close{
+      position:absolute;right:14px;top:14px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,250,247,.82);font-size:1.4rem;color:var(--coffee);cursor:pointer;
+    }
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+    @media(max-width:420px){
+      .page{padding:18px 14px 38px}
+      .main-logo{width:100%}
+      .tagline{font-size:.98rem}
+      section{padding:22px 16px}
+      .about-card{grid-template-columns:1fr;text-align:center}
+      .sthe-photo{margin:0 auto}
+      .story-grid,.result-grid{gap:7px}
+      figcaption{font-size:.58rem;left:5px;right:5px;bottom:5px;padding:5px 6px}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <img class="main-logo" src="assets/logo-principal.png" alt="Sthe Nicácio Beauty Studio" />
+      <p class="tagline">Cabelos alinhados, brilho intenso e resultados que valorizam sua beleza natural.</p>
+      <div class="soft-label">Progressiva • Tratamentos Capilares</div>
+    </header>
+
+    <nav class="links" aria-label="Links principais">
+      <a class="btn primary" href="https://wa.me/5521970978672?text=Ol%C3%A1%2C%20Sthe!%20Tudo%20bem%3F%0A%0AGostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20procedimentos%20e%20agendar%20um%20hor%C3%A1rio.%20%E2%9C%A8" target="_blank" rel="noopener">
+        <span>🤎 <strong>Agendar pelo WhatsApp</strong></span><span class="arrow">→</span>
+      </a>
+      <a class="btn" href="#transformacoes"><span>📸 <strong>Transformações Reais</strong></span><span class="arrow">→</span></a>
+      <a class="btn" href="#sobre"><span>👩🏻 <strong>Conheça a Sthe</strong></span><span class="arrow">→</span></a>
+      <a class="btn" href="#avaliacoes"><span>⭐ <strong>Avaliações</strong></span><span class="arrow">→</span></a>
+      <a class="btn" href="#instagram"><span>📷 <strong>Instagram</strong></span><span class="arrow">→</span></a>
+    </nav>
+
+    <section id="sobre">
+      <img class="mini-logo" src="assets/logo-ondas.jpeg" alt="Logo circular Sthe Nicácio Beauty Studio" />
+      <div class="about-card">
+        <img class="sthe-photo" src="assets/sthe.jpeg" alt="Foto da profissional Sthe" />
+        <div class="about-text">
+          <h3>Olá, eu sou a Sthe.</h3>
+          <p>Sou apaixonada por beleza e por ajudar cada cliente a se sentir mais confiante através do cuidado com os cabelos.</p>
+        </div>
+      </div>
+      <p class="section-sub" style="margin-top:16px;margin-bottom:0">Cada atendimento é realizado com atenção, carinho e dedicação, buscando resultados que valorizem a beleza natural de cada pessoa.</p>
+      <div class="chips">
+        <span class="chip">Atendimento cuidadoso</span>
+        <span class="chip">Cuidado em cada detalhe</span>
+        <span class="chip">Beleza natural</span>
+      </div>
+    </section>
+
+    <section id="transformacoes">
+      <h2 class="section-title">Transformações Reais</h2>
+      <p class="section-sub">Antes, processo e resultado final para você acompanhar a transformação dos fios.</p>
+      <div class="story-grid">
+        <figure><img src="assets/antes.jpeg" alt="Antes do procedimento" /><figcaption>Antes</figcaption></figure>
+        <figure><img src="assets/durante.jpeg" alt="Durante o procedimento" /><figcaption>Processo</figcaption></figure>
+        <figure><img src="assets/depois.jpeg" alt="Depois do procedimento" /><figcaption>Depois</figcaption></figure>
+      </div>
+      <h2 class="section-title" style="font-size:1.25rem;margin-top:24px">Resultados finais</h2>
+      <div class="result-grid">
+        <figure><img src="assets/resultado-1.jpeg" alt="Resultado final cabelo castanho com brilho" /><figcaption>Resultado</figcaption></figure>
+        <figure><img src="assets/resultado-2.jpeg" alt="Resultado final cabelo longo alinhado" /><figcaption>Resultado</figcaption></figure>
+        <figure><img src="assets/resultado-3.jpeg" alt="Resultado final cabelo preto alinhado" /><figcaption>Resultado</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="avaliacoes">
+      <h2 class="section-title">Avaliações</h2>
+      <p class="section-sub">Clientes que confiaram no cuidado da Sthe.</p>
+      <div class="reviews">
+        <article class="review"><div class="stars">★★★★★</div><p>“Amei o resultado! Meu cabelo ficou alinhado, com muito brilho e sem perder a leveza. Além do atendimento ser super cuidadoso.”</p><strong>— Yasmin Vizeu</strong></article>
+        <article class="review"><div class="stars">★★★★★</div><p>“Fiquei impressionada com a transformação. Meu cabelo estava bastante ressecado e o resultado ficou lindo. Atendimento maravilhoso.”</p><strong>— Rosália Dias</strong></article>
+        <article class="review"><div class="stars">★★★★★</div><p>“A Sthe foi muito atenciosa e tirou todas as minhas dúvidas antes do procedimento. O resultado ficou exatamente como eu queria.”</p><strong>— Aline Moraes</strong></article>
+        <article class="review"><div class="stars">★★★★★</div><p>“Meu cabelo ficou macio, alinhado e com um brilho incrível. Dá para perceber o carinho e a dedicação em cada detalhe.”</p><strong>— Fátima Torres</strong></article>
+      </div>
+    </section>
+
+    <section id="instagram">
+      <h2 class="section-title">Instagram</h2>
+      <p class="section-sub">Adicione aqui o @ da Sthe quando quiser. O botão já está separado para receber o link oficial.</p>
+      <a class="btn" href="#" aria-disabled="true"><span>📷 <strong>@sthe.nicio</strong></span><span class="arrow">em breve</span></a>
+    </section>
+
+    <footer>
+      <strong>Sthe Nicácio Beauty Studio</strong><br />
+      Cuidado • Beleza • Confiança<br />
+      WhatsApp: (21) 97097-8672
+    </footer>
+  </main>
+
+  <a class="float-whats" aria-label="Agendar pelo WhatsApp" href="https://wa.me/5521970978672?text=Ol%C3%A1%2C%20Sthe!%20Tudo%20bem%3F%0A%0AGostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20procedimentos%20e%20agendar%20um%20hor%C3%A1rio.%20%E2%9C%A8" target="_blank" rel="noopener">☏</a>
+
+  <dialog id="photoModal">
+    <button class="close" aria-label="Fechar">×</button>
+    <img class="modal-img" src="" alt="Imagem ampliada" />
+  </dialog>
+
+  <script>
+    const modal = document.querySelector('#photoModal');
+    const modalImg = modal.querySelector('.modal-img');
+    const closeBtn = modal.querySelector('.close');
+
+    document.querySelectorAll('figure img').forEach(img => {
+      img.addEventListener('click', () => {
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        modal.showModal();
+      });
+    });
+
+    closeBtn.addEventListener('click', () => modal.close());
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) modal.close();
+    });
+  </script>
+</body>
+</html>
